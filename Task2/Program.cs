@@ -14,6 +14,8 @@
                 Console.WriteLine("M - Display mean of the numbers");
                 Console.WriteLine("S - Display the smallest number");
                 Console.WriteLine("L - Display the largest number");
+                Console.WriteLine("F - Find a number");
+                Console.WriteLine("C - Clear The Whole List");
                 Console.WriteLine("Q - Quit");
                 Console.Write("==>");
                 var input = Console.ReadLine();
@@ -57,6 +59,11 @@
                 {
                     Console.Write("Enter a number to add : ==> ");
                     var number = Convert.ToInt32(Console.ReadLine());
+                    if (numbers.Contains(number))
+                    {
+                        Console.WriteLine("Number already exists");
+                        continue;
+                    }
                     numbers.Add(number);
                     Console.WriteLine($" {number} added");
 
@@ -118,6 +125,34 @@
                         Console.WriteLine("Largest number is " + max);
                     }
 
+                }
+                else if (input.ToLower() == "f")
+                {
+                    if (numbers.Count == 0)
+                    {
+                        Console.WriteLine("List is empty");
+                    }
+                    else
+                    {
+                        Console.Write("Enter a number to find : ==> ");
+                        var number = Convert.ToInt32(Console.ReadLine());
+                        if (numbers.Contains(number))
+                        {
+                            Console.WriteLine($"Number {number} found at index {numbers.IndexOf(number)+1}");
+
+                        }
+                        else
+                        {
+                            Console.WriteLine("Number not found");
+                        }
+
+                    }
+
+                }
+                else if (input.ToLower() == "c")
+                {
+                    numbers.Clear();
+                    Console.WriteLine("List cleared");
                 }
                 else
                 {
